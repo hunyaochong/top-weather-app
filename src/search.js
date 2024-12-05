@@ -2,10 +2,6 @@
 import { rapidApiKey, rapidApiHost } from './config';
 import loadWeather from './weather';
 
-// each time a key is into input
-// submit a new request to geoDB cities based on latest string
-// console.log out the new search results
-
 let search;
 
 const input = document.querySelector("input[type='text']");
@@ -34,7 +30,6 @@ async function populateSearch(searchInput) {
 
 input.addEventListener('keyup', () => {
   search = input.value;
-  // submit inputVal into query
   populateSearch(search);
 });
 
