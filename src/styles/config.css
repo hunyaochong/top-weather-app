@@ -1,0 +1,5 @@
+.visuallyHidden {
+  color: transparent;
+  font-size: 0;
+  opacity: 0;
+}
