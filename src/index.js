@@ -2,9 +2,13 @@ import './search';
 import getLocationByIp from './geolocation';
 import loadWeather from './weather';
 
+import './styles/weather_hero.css';
+
 async function initWeather() {
   const data = await getLocationByIp();
-  loadWeather(data, 'metric');
+  const [city, currentTime] = data;
+  loadWeather(city, 'metric');
+  // todo: to parse time into domController
 }
 
 initWeather();

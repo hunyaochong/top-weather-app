@@ -1,0 +1,15 @@
+html {
+  /* fonts */
+  --sans-serif-font-stack: -apple-system, BlinkMacSystemFont, avenir next,
+    avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto,
+    noto, arial, sans-serif;
+  --poppins-stack: 'Poppins', var(--sans-serif-font-stack);
+  --open-sans-stack: 'Open Sans', var(--sans-serif-font-stack);
+  --nunito-sans-stack: 'Nunito Sans', var(--sans-serif-font-stack);
+  --bebas-neue-stack: 'Bebas Neue', var(--sans-serif-font-stack);
+
+  /* color */
+  --bg-button-active: hsl(221, 31%, 35%);
+  --bg-button-inactive: hsla(0, 0%, 70%, 0.24);
+  --bg-cards: hsla(0, 0%, 19%, 0.4);
+}

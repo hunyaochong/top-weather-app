@@ -5,11 +5,12 @@ async function getLocationByIp() {
 
   try {
     const response = await fetch(
-      `https://ipgeolocation.abstractapi.com/v1/?api_key=${ipGeolocationAPI}&ip_address=&fields=country,city`,
+      `https://ipgeolocation.abstractapi.com/v1/?api_key=${ipGeolocationAPI}&ip_address=`,
       options,
     );
     const data = await response.json();
-    return data.city;
+    // console.log(data);
+    return [data.city, data.timezone.current_time];
   } catch (err) {
     alert(err);
   }

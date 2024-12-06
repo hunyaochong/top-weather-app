@@ -4,15 +4,103 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <input type="text" />
+    <!-- <input type="text" />
     <input type="submit" />
     <div class="unit-group">
       <button aria-selected="true" class="selected" id="celsius">
         Celsius
       </button>
       <button id="fahrenheit">Fahrenheit</button>
+    </div>
+     -->
+    <div class="max-width-wrapper">
+      <header>
+        <input type="text" />
+        <button aria-selected="true" class="selected" id="celsius">
+          Celsius
+        </button>
+      </header>
+      <section class="weather-hero">
+        <h1 class="weather-hero__title" aria-hidden="true">
+          Weather overview in specified location
+        </h1>
+        <h2 class="weather-hero__location">Petaling Jaya, MY</h2>
+        <h2 class="weather-hero__temperature">32</h2>
+        <h3>Few clouds</h3>
+        <div>
+          <span>H:31.9</span>
+          <span>L:23.0</span>
+        </div>
+      </section>
+      <section class="weather-main">
+        <div class="weather-main__section hourly-forecast">
+          <h1>Hourly Forecast</h1>
+        </div>
+        <div class="weather-main__section daily-forecast">
+          <h1>Daily Forecast</h1>
+          <span></span>
+          <p>Humidity is making it feel significantly warmer than usual</p>
+        </div>
+
+        <div class="weather-main__section feels-like">
+          <h1>Feels like</h1>
+          <span></span>
+          <p>Humidity is making it feel significantly warmer than usual</p>
+        </div>
+
+        <div class="weather-main__section sunset">
+          <h1>Sunset</h1>
+          <span></span>
+          <p>Sunrise: 07:06</p>
+        </div>
+
+        <div class="weather-main__section humidity">
+          <h1>Humidity</h1>
+          <span></span>
+          <p>High humidity, take precautionary measures</p>
+        </div>
+
+        <div class="weather-main__section wind">
+          <h1>Wind</h1>
+          <span></span>
+          <p>The wind is coming from 0°</p>
+        </div>
+
+        <div class="weather-main__section cloud-cover">
+          <h1>Cloud cover</h1>
+          <span></span>
+          <p>Seek cover and use significant sun protection</p>
+        </div>
+
+        <div class="weather-main__section visibility">
+          <h1>Visibility</h1>
+          <span></span>
+          <p>It is clear right now</p>
+        </div>
+
+        <div class="weather-main__section pressure">
+          <h1>Visibility</h1>
+          <span></span>
+          <p>It is clear right now</p>
+        </div>
+      </section>
+
+      <footer>
+        <a
+          href="https://www.visualcrossing.com/"
+          alt="Link to weather API used by this web application"
+          >Weather</a
+        >
+        in XXX at XXX localtime
+      </footer>
     </div>
   </body>
 </html>
