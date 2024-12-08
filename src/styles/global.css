@@ -9,7 +9,11 @@ html {
   --bebas-neue-stack: 'Bebas Neue', var(--sans-serif-font-stack);
 
   /* color */
-  --bg-button-active: hsl(221, 31%, 35%);
-  --bg-button-inactive: hsla(0, 0%, 70%, 0.24);
-  --bg-cards: hsla(0, 0%, 19%, 0.4);
+  --primary-color: hsla(0 0% 100% 100%);
+  --bg-light-grey: hsla(220 16% 96% 100%);
+  --bg-card: hsla(0 0% 85% 100%);
+
+  --color-accent: hsla(240 19% 63% 100%);
+  --inner-shadow: 0px 4px 4px hsl(0 0% 0% 25%) inset;
+  --outer-shadow: 0px 4px 4px hsl(0 0% 0% 25%);
 }

@@ -12,20 +12,11 @@
     />
   </head>
   <body>
-    <!-- <input type="text" />
-    <input type="submit" />
-    <div class="unit-group">
-      <button aria-selected="true" class="selected" id="celsius">
-        Celsius
-      </button>
-      <button id="fahrenheit">Fahrenheit</button>
-    </div>
-     -->
     <div class="max-width-wrapper">
       <header>
         <form action="submit">
-          <label for="search" class="visuallyHidden">Search</label>
-          <input type="text" />
+          <label for="search" class="visually-hidden">Search</label>
+          <input type="text" placeholder="Boston, United States" />
           <button aria-label="submit">
             <img src="./assets/icon/search.svg" alt="search icon" />
           </button>
@@ -36,7 +27,7 @@
       </header>
 
       <section class="weather-hero">
-        <h1 class="visuallyHidden" aria-hidden="true">
+        <h1 class="visually-hidden" aria-hidden="true">
           Weather overview in specified location
         </h1>
         <h2 class="weather-hero__location">Petaling Jaya, MY</h2>
@@ -47,7 +38,8 @@
           <span>L:23.0</span>
         </div>
       </section>
-      <section class="weather-main">
+
+      <main class="weather-main">
         <div class="weather-main__section hourly-forecast">
           <h1>Hourly Forecast</h1>
         </div>
@@ -98,7 +90,7 @@
           <span></span>
           <p>It is clear right now</p>
         </div>
-      </section>
+      </main>
 
       <footer>
         <a
