@@ -1,0 +1,28 @@
+.weather-hero {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-color-white);
+  font-family: var(--nunito-sans-stack);
+  font-weight: var(--font-medium);
+
+  & > .weather-hero__location,
+  & > .weather-hero__feels_like {
+    font-size: var(--font-size-l);
+  }
+
+  & > .weather-hero_feels_like {
+    color: var(--secondary-color-grey);
+  }
+
+  & > .weather-hero__temperature {
+    font-size: var(--font-size-xxl);
+    line-height: 1;
+  }
+
+  & > .weather-hero__temperature_range {
+    font-size: var(--font-size-s);
+  }
+}

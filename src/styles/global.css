@@ -8,12 +8,35 @@ html {
   --nunito-sans-stack: 'Nunito Sans', var(--sans-serif-font-stack);
   --bebas-neue-stack: 'Bebas Neue', var(--sans-serif-font-stack);
 
-  /* color */
-  --primary-color: hsla(0 0% 100% 100%);
-  --bg-light-grey: hsla(220 16% 96% 100%);
-  --bg-card: hsla(0 0% 85% 100%);
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-s: 1rem; /* 16px */
+  --font-size-m: 1.25rem; /* 20px */
+  --font-size-l: 1.5rem; /* 24px */
+  --font-size-xl: 2rem; /* 32px */
+  --font-size-xxl: 6rem; /* 96px */
 
-  --color-accent: hsla(240 19% 63% 100%);
-  --inner-shadow: 0px 4px 4px hsl(0 0% 0% 25%) inset;
-  --outer-shadow: 0px 4px 4px hsl(0 0% 0% 25%);
+  --font-extra-heavy: 900;
+  --font-heavy: 700;
+  --font-medium: 400;
+  --font-light: 100;
+
+  /* color */
+  --primary-color-white: hsl(0deg 0% 100%);
+  --secondary-color-grey: hsl(0deg 0% 80%);
+  --bg-light-grey: hsl(220deg 16% 96%);
+  --bg-card: hsl(0deg 0% 85%);
+
+  --color-accent: hsla(240deg 19% 63% 1);
+  --inner-shadow: 0px 4px 4px hsla(0deg 0% 0% 0.25) inset;
+  --outer-shadow: 0px 4px 4px rgba(0deg 0% 0% 0.25);
+
+  --space-xs: 4px;
+  --space-s: 8px;
+  --space-m: 16px;
+  --space-l: 24px;
+  --space-xl: 32px;
+
+  --laptop-and-below: calc((1500 / 16) * 1rem);
+  --tablet-and-below: calc((1100 / 16) * 1rem);
+  --phone-and-below: calc((550 / 16) * 1rem);
 }

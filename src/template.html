@@ -21,6 +21,7 @@
             <img src="./assets/icon/search.svg" alt="search icon" />
           </button>
         </form>
+        <!-- todo: to be generated using react component? -->
         <button aria-selected="true" class="selected" id="celsius">
           Celsius
         </button>
@@ -31,11 +32,11 @@
           Weather overview in specified location
         </h1>
         <h2 class="weather-hero__location">Petaling Jaya, MY</h2>
-        <h2 class="weather-hero__temperature">32</h2>
-        <h3>Few clouds</h3>
-        <div>
-          <span>H:31.9</span>
-          <span>L:23.0</span>
+        <h2 class="weather-hero__temperature">32°</h2>
+        <h3 class="weather-hero__feels_like">Feels like 36°</h3>
+        <div class="weather-hero__temperature_range">
+          <span>H:31.9°</span>
+          <span>L:23.0°</span>
         </div>
       </section>
 
@@ -80,6 +81,12 @@
         </div>
 
         <div class="weather-main__section visibility">
+          <h1>Visibility</h1>
+          <span></span>
+          <p>It is clear right now</p>
+        </div>
+
+        <div class="weather-main__section pressure">
           <h1>Visibility</h1>
           <span></span>
           <p>It is clear right now</p>
