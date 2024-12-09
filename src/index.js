@@ -8,6 +8,7 @@ import './styles/header.css';
 import './styles/hero.css';
 import './styles/search_form.css';
 import './styles/weather_grid.css';
+import './styles/footer.css';
 
 async function initWeather() {
   const data = await getLocationByIp();

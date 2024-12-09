@@ -1,0 +1,9 @@
+footer {
+  color: black;
+  display: flex;
+  justify-content: center;
+
+  > a {
+    color: inherit;
+  }
+}
