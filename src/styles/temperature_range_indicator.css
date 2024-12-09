@@ -1,0 +1,56 @@
+.daily-forecast__wrapper {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size-xs);
+
+  & > .daily-forecast {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 0.5px solid var(--secondary-color-grey);
+    height: 40px;
+
+    &:first-child {
+      border-top: 0.5px solid var(--secondary-color-grey);
+    }
+  }
+}
+
+.range {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  height: var(--space-xl);
+}
+
+.min-value,
+.max-value {
+  width: 24px; /* Ensure labels are aligned */
+  text-align: center;
+  font-family: var(--open-sans-stack);
+  color: white;
+}
+
+.bar {
+  position: relative;
+  width: 150px; /* Length of the global range bar */
+  height: 6px;
+  background-color: rgba(56, 56, 56, 0.3); /* Global range background */
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.inner-bar {
+  position: absolute;
+  left: 20%; /* Start of the local range (20% of the global range) */
+  width: 50%; /* Width of the local range (50% of the global range) */
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 188, 0, 0.8) 0%,
+    rgba(255, 165, 0, 0.8) 20%,
+    rgba(255, 97, 35, 0.8) 60%,
+    rgba(255, 0, 0, 0.8) 100%
+  ); /* Cyan color for the local range */
+  border-radius: 4px;
+}

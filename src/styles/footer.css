@@ -1,7 +1,8 @@
 footer {
-  color: black;
+  color: var(--secondary-color-grey);
   display: flex;
   justify-content: center;
+  padding-bottom: var(--space-m);
 
   > a {
     color: inherit;

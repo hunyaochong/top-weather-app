@@ -13,15 +13,7 @@ body {
 
 .max-width-wrapper {
   max-width: 1100px;
-  border: 1px solid;
   display: flex;
   flex-direction: column;
   margin: auto;
-}
-
-header,
-section,
-main,
-footer {
-  border: 1px solid black;
 }

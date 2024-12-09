@@ -3,4 +3,12 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  & > form {
+    margin-left: 18px;
+  }
+
+  & > button {
+    margin-right: 18px;
+  }
 }
