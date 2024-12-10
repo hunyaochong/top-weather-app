@@ -28,7 +28,7 @@
   width: 24px; /* Ensure labels are aligned */
   text-align: center;
   font-family: var(--open-sans-stack);
-  color: white;
+  color: black;
 }
 
 .bar {

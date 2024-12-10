@@ -1,5 +1,5 @@
-import './search';
 import { weatherAPI } from './config';
+import createDailyForecast from './dailyForecastComponent';
 
 const loadWeather = async (searchInput, unit = 'metric') => {
   try {
@@ -13,12 +13,17 @@ const loadWeather = async (searchInput, unit = 'metric') => {
     // todo: to set it to display based on current time
     console.log(weatherData.days[0].hours);
 
-    // daily forecast for next 6 days
-    const restOfWeek = 6;
-    for (let i = 1; i <= restOfWeek; i++) {
+    // daily forecast for next 10 days
+    const NEXT_TEN_DAYS = 10;
+    // todo: get the min and max temp
+    const [globalMinTemp, globalMaxtemp] = getGlobalRange(weatherData.days);
+
+    for (let i = 1; i <= NEXT_TEN_DAYS; i++) {
+      const dailyWeatherObj = weatherData.days[i];
       console.log(
-        `tempmin: ${weatherData.days[i].tempmin}, tempmax: ${weatherData.days[i].tempmax}`,
+        `tempmin: ${dailyWeatherObj.tempmin}, tempmax: ${dailyWeatherObj.tempmax}`,
       );
+      // createDailyForecast(weatherData.days[i].datetime);
     }
 
     // header - today;s condition (address, temp, conditions, tempmax tempmin)

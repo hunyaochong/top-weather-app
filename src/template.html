@@ -16,10 +16,15 @@
       <header>
         <form action="submit">
           <label for="search" class="visually-hidden">Search</label>
-          <input type="text" placeholder="Boston, United States" />
+          <input
+            type="search"
+            autocomplete="off"
+            placeholder="Boston, United States"
+          />
           <button aria-label="submit">
             <img src="./assets/icon/search.svg" alt="search icon" />
           </button>
+          <ul class="search_result"></ul>
         </form>
         <!-- todo: to be generated using react component? -->
         <button aria-selected="true" class="selected" id="celsius">
@@ -276,7 +281,7 @@
         <div class="weather-main__section pressure">
           <div class="weather-main__section_header">
             <img src="./assets/icon/gauge.svg" alt="" />
-            <h1>Visibility</h1>
+            <h1>Pressure</h1>
           </div>
           <span></span>
           <p>It is clear right now</p>
@@ -284,7 +289,7 @@
 
         <div class="weather-main__section pressure">
           <div class="weather-main__section_header">
-            <h1>Visibility</h1>
+            <h1>Precipitation</h1>
           </div>
           <span></span>
           <p>It is clear right now</p>

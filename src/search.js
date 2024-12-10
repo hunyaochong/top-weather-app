@@ -2,11 +2,10 @@
 import { rapidApiKey, rapidApiHost } from './config';
 import loadWeather from './weather';
 
-let search;
+let searchVal;
 
-const input = document.querySelector("input[type='text']");
-const submitBtn = document.querySelector("input[type='submit']");
-const unitGroup = document.querySelector('.unit-group');
+const input = document.querySelector("input[type='search']");
+const searchResultContainer = document.querySelector('.search_result');
 
 async function populateSearch(searchInput) {
   const processedString = searchInput.replace(' ', '%20');
@@ -21,25 +20,61 @@ async function populateSearch(searchInput) {
 
   try {
     const response = await fetch(url, options);
+
+    // Check if the HTTP response status is ok (200-299)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
     const result = await response.text();
-    console.log(result);
+    const locObject = JSON.parse(result);
+    return locObject.data;
   } catch (error) {
-    console.error(error);
+    console.error(`Parsing error: ${error.message}`);
+    throw error;
   }
 }
 
-input.addEventListener('keyup', () => {
-  search = input.value;
-  populateSearch(search);
-});
+function stringifyLoc(loc) {
+  const [city, region, country] = [loc.city, loc.region, loc.country];
+  const stringifiedLoc = `${city}, ${region}, ${country}`;
+  return stringifiedLoc;
+}
 
-submitBtn.addEventListener('click', () => {
-  loadWeather(search);
-});
+function createSearchResult(stringifiedLoc) {
+  const searchResultItem = document.createElement('li');
+  searchResultItem.textContent = stringifiedLoc;
+  return searchResultItem;
+}
 
-unitGroup.addEventListener('click', (e) => {
-  // by default, display metric unit
-  e.target.id === 'fahrenheit'
-    ? loadWeather(search, 'us')
-    : loadWeather(search, 'metric');
-});
+function handleClick(e) {
+  const city = e.target.textContent.split(',')[0];
+  input.value = city;
+  loadWeather(input.value);
+  searchResultContainer.innerHTML = '';
+}
+
+function handleSearch() {
+  searchVal = input.value;
+  let searchResult;
+
+  searchResult = populateSearch(searchVal);
+
+  if (searchResult === undefined) {
+    console.log(`in undefined block`);
+    // searchResult = setTimeout(populateSearch(searchVal), 1000);
+  }
+
+  // clear existing search
+  searchResultContainer.innerHTML = '';
+  searchResult.then((locArray) => {
+    locArray.forEach((loc) => {
+      const stringifiedLoc = stringifyLoc(loc);
+      const searchResultItem = createSearchResult(stringifiedLoc);
+      searchResultContainer.appendChild(searchResultItem);
+      searchResultContainer.addEventListener('click', handleClick);
+    });
+  });
+}
+
+input.addEventListener('keyup', handleSearch);
