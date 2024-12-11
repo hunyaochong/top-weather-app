@@ -1,6 +1,6 @@
 import './search';
 import getLocationByIp from './geolocation';
-// import loadWeather from './weather';
+import loadWeather from './weather';
 import './styles/reset.css';
 import './styles/config.css';
 import './styles/global.css';
@@ -15,7 +15,8 @@ import './styles/footer.css';
 async function initWeather() {
   const data = await getLocationByIp();
   const [city, currentTime] = data;
-  // loadWeather(city);
+  console.log(`City passed into index.js is: ${city}`);
+  loadWeather(city);
   // todo: to parse time into domController
 }
 

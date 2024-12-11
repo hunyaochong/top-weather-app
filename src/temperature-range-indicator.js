@@ -48,5 +48,12 @@ export default function createTemperatureRange(
   const leftPercent = ((localMin - globalMin) / globalRange) * 100;
   const widthPercent = ((localMax - localMin) / globalRange) * 100;
 
-  renderComponent(localMin, localMax, leftPercent, widthPercent);
+  const component = renderComponent(
+    localMin,
+    localMax,
+    leftPercent,
+    widthPercent,
+  );
+
+  return component;
 }

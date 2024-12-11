@@ -1,4 +1,5 @@
 import createTempSlider from './temperature-range-indicator';
+import sunsetIcon from './assets/icon/sunset.svg';
 
 function getDayOfWeek(dateString) {
   const date = new Date(dateString); // Convert string to Date object
@@ -7,24 +8,6 @@ function getDayOfWeek(dateString) {
   return dayOfWeek;
 }
 
-// const date = '2024-12-10';
-// console.log(getDayOfWeek(date)); // Output: Tuesday
-
-// cache parent container
-const dailyForecastWrapper = document.querySelector('.daily-forecast__wrapper');
-
-// create DOM elements
-const dailyForecastDiv = document.createElement('div');
-dailyForecastDiv.classList.add('daily-forecast');
-
-const daySpan = document.querySelector('span');
-daySpan.classList.add('day');
-
-const weatherIcon = document.querySelector('img');
-weatherIcon.setAttribute('src', './assets/icon/sunset.svg');
-weatherIcon.setAttribute('alt', 'Sunset icon');
-
-// read data into DOM elements
 export default function createDailyForecast(
   date,
   localMinTemp,
@@ -32,7 +15,19 @@ export default function createDailyForecast(
   globalMinTemp,
   globalMaxTemp,
 ) {
+  // create DOM elements
+  const dailyForecastDiv = document.createElement('div');
+  dailyForecastDiv.classList.add('daily-forecast');
+
+  // todo: to tailor icon based on weatherCondition
+  const weatherIcon = document.querySelector('img');
+  weatherIcon.src = sunsetIcon;
+  weatherIcon.setAttribute('alt', 'Sunset icon');
+
+  const daySpan = document.querySelector('span');
+  daySpan.classList.add('day');
   daySpan.textContent = getDayOfWeek(date);
+
   const tempSliderComponent = createTempSlider(
     localMinTemp,
     localMaxTemp,
@@ -44,5 +39,5 @@ export default function createDailyForecast(
   dailyForecastDiv.appendChild(weatherIcon);
   dailyForecastDiv.appendChild(tempSliderComponent);
 
-  dailyForecastWrapper.appendChild(dailyForecastDiv);
+  return dailyForecastDiv;
 }
