@@ -1,7 +1,6 @@
 import { weatherAPI } from './config';
-import { renderHero, generateDailyForecastComponent } from './renderer.js';
-
-// cache DOM
+import { renderHero, renderDailyForecastComponent } from './renderer';
+import generateWeatherCardSection from './cardComponent';
 
 function getGlobalRange(data, duration) {
   const minTempArr = [];
@@ -17,20 +16,31 @@ function getGlobalRange(data, duration) {
   const globalMinTemp = Math.min(...minTempArr);
   const globalMaxTemp = Math.max(...maxTempArr);
 
-  return [globalMinTemp, globalMaxTemp];
+  return [globalMinTemp.toFixed(1), globalMaxTemp.toFixed(1)];
 }
 
 function generateHeroSection(data) {
-  console.log(`Data is: ${data}`);
   const heroObj = {
     location: data.address,
     temperature: data.currentConditions.temp,
     feels_like: data.currentConditions.feelslike,
-    high: data.days[0].tempmax,
-    low: data.days[0].tempmin,
+    high: data.days[0].tempmax.toFixed(1),
+    low: data.days[0].tempmin.toFixed(1),
   };
 
   renderHero(heroObj);
+}
+
+function generateDailyForecastSection(data) {
+  const NEXT_TEN_DAYS = 10;
+  const [globalMinTemp, globalMaxtemp] = getGlobalRange(data, NEXT_TEN_DAYS);
+
+  renderDailyForecastComponent(
+    data,
+    globalMinTemp,
+    globalMaxtemp,
+    NEXT_TEN_DAYS,
+  );
 }
 
 const loadWeather = async (searchInput, unit = 'metric') => {
@@ -43,52 +53,17 @@ const loadWeather = async (searchInput, unit = 'metric') => {
 
     generateHeroSection(weatherData);
 
-    const NEXT_TEN_DAYS = 10;
-    const [globalMinTemp, globalMaxtemp] = getGlobalRange(
-      weatherData,
-      NEXT_TEN_DAYS,
-    );
-
-    generateDailyForecastComponent(
-      weatherData,
-      globalMinTemp,
-      globalMaxtemp,
-      NEXT_TEN_DAYS,
-    );
-
+    generateDailyForecastSection(weatherData);
     // hourly forecast
     // todo: to set it to display based on current time
     // console.log(weatherData.days[0].hours);
 
-    // console.log(`Weather icon: ${weatherData.currentConditions.icon}`);
-    // console.log(
-    //   `Current weather condition: ${weatherData.currentConditions.conditions}`,
-    // );
+    generateWeatherCardSection(weatherData);
 
-    // feels like
-    // console.log(`Today feels like: ${weatherData.currentConditions.feelslike}`);
-
-    // sunset
-    // console.log(`Today's sunset at: ${weatherData.days[0].sunset}`);
-
-    // humidity
-    // console.log(`Today's humidity: ${weatherData.currentConditions.humidity}`);
-
-    // wind
-    // console.log(`Today's wind: ${weatherData.currentConditions.windspeed}`);
-
-    // cloud cover
-    // console.log(
-    //   `Today's cloudcover: ${weatherData.currentConditions.cloudcover}`,
-    // );
-
-    // visibility
-    // console.log(
-    //   `Today's visibility: ${weatherData.currentConditions.visibility}`,
-    // );
-
-    // pressure
-    // console.log(`Today's pressure: ${weatherData.currentConditions.pressure}`);
+    /* Other useful info to consider:
+    weatherData.currentConditions.icon
+    weatherData.currentConditions.conditions
+    */
   } catch (err) {
     console.log(err);
     alert('Request invalid, please enter a valid city name');

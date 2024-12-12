@@ -9,7 +9,6 @@ async function getLocationByIp() {
       options,
     );
     const data = await response.json();
-    console.log(data);
     return [data.city, data.timezone.current_time];
   } catch (err) {
     alert(err);

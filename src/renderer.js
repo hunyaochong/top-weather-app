@@ -31,7 +31,7 @@ export function renderHero(hero) {
   weatherHeroSection.appendChild(weatherHeroTempRange);
 }
 
-export function generateDailyForecastComponent(
+export function renderDailyForecastComponent(
   weatherData,
   globalMinTemp,
   globalMaxtemp,
@@ -47,11 +47,64 @@ export function generateDailyForecastComponent(
     const dailyWeather = weatherData.days[i];
     const dailyForecastComponent = createDailyForecast(
       dailyWeather.datetime,
-      dailyWeather.tempmin,
-      dailyWeather.tempmax,
+      dailyWeather.tempmin.toFixed(1),
+      dailyWeather.tempmax.toFixed(1),
       globalMinTemp,
       globalMaxtemp,
     );
     dailyForecastWrapper.appendChild(dailyForecastComponent);
   }
+}
+
+function generateCardComponent(data, commentaries, wrapper) {
+  // todo: adjust sunset icon
+  console.log(`Data in generateCardComponent: ${data}`);
+  console.log(`Wrapper in generateCardComponent: ${wrapper}`);
+  console.log(`Commentaries in generateCardComponent: ${commentaries}`);
+  const infoSpan = wrapper.querySelector('.weather-misc__info');
+  const commentaryEle = wrapper.querySelector('p');
+  console.log(`Selecting info span: ${infoSpan}`);
+  infoSpan.textContent = data;
+  commentaryEle.textContent = commentaries;
+}
+
+export function renderCardComponent(units, commentaries) {
+  // todo: to add commentaries
+  const sunsetWrapper = document.querySelector('.sunset');
+  generateCardComponent(
+    units.sunset,
+    commentaries.sunsetCommentaries,
+    sunsetWrapper,
+  );
+
+  const humidityWrapper = document.querySelector('.humidity');
+  generateCardComponent(
+    units.humidity,
+    commentaries.humidityCommentaries,
+    humidityWrapper,
+  );
+
+  const windWrapper = document.querySelector('.wind');
+  generateCardComponent(units.wind, commentaries.windCommentaries, windWrapper);
+
+  const cloudCoverWrapper = document.querySelector('.cloud-cover');
+  generateCardComponent(
+    units.cloudCover,
+    commentaries.cloudCoverCommentaries,
+    cloudCoverWrapper,
+  );
+
+  const visibilityWrapper = document.querySelector('.visibility');
+  generateCardComponent(
+    units.visibility,
+    commentaries.visibilityCommentaries,
+    visibilityWrapper,
+  );
+
+  const pressureWrapper = document.querySelector('.pressure');
+  generateCardComponent(
+    units.pressure,
+    commentaries.pressureCommentaries,
+    pressureWrapper,
+  );
 }

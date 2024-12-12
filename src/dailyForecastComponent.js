@@ -20,9 +20,9 @@ export default function createDailyForecast(
   dailyForecastDiv.classList.add('daily-forecast');
 
   // todo: to tailor icon based on weatherCondition
-  const weatherIcon = document.querySelector('img');
-  weatherIcon.src = sunsetIcon;
-  weatherIcon.setAttribute('alt', 'Sunset icon');
+  // const weatherIcon = document.querySelector('img');
+  // weatherIcon.src = sunsetIcon;
+  // weatherIcon.setAttribute('alt', 'Sunset icon');
 
   const daySpan = document.querySelector('span');
   daySpan.classList.add('day');
@@ -36,7 +36,7 @@ export default function createDailyForecast(
   );
 
   dailyForecastDiv.appendChild(daySpan);
-  dailyForecastDiv.appendChild(weatherIcon);
+  // dailyForecastDiv.appendChild(weatherIcon);
   dailyForecastDiv.appendChild(tempSliderComponent);
 
   return dailyForecastDiv;

@@ -16,6 +16,10 @@
   }
 }
 
+.day {
+  width: 72px;
+}
+
 .range {
   display: flex;
   align-items: center;
@@ -31,9 +35,13 @@
   color: black;
 }
 
+.min-value {
+  margin-right: var(--space-xs);
+}
+
 .bar {
   position: relative;
-  width: 150px; /* Length of the global range bar */
+  width: 125px; /* Length of the global range bar */
   height: 6px;
   background-color: rgba(56, 56, 56, 0.3); /* Global range background */
   border-radius: 4px;
