@@ -1,0 +1,21 @@
+.daily-forecast__wrapper {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size-xs);
+
+  & > .daily-forecast {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border-bottom: 0.5px solid var(--secondary-color-grey); */
+    height: 45px;
+
+    &:first-child {
+      /* border-top: 0.5px solid var(--secondary-color-grey); */
+    }
+  }
+}
+
+.day {
+  width: 72px;
+}

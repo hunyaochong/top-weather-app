@@ -1,5 +1,6 @@
 import { weatherAPI } from './config';
 import { renderHero, renderDailyForecastComponent } from './renderer';
+import renderBackground from './domController';
 import generateWeatherCardSection from './cardComponent';
 import generateHourlyForecastSection from './hourlyForecastComponent';
 
@@ -11,6 +12,12 @@ const loadWeather = async (searchInput, unit = 'metric') => {
     const weatherData = await response.json();
     console.log(weatherData);
 
+    renderBackground(
+      weatherData.currentConditions.icon,
+      weatherData.days[0].sunrise,
+      weatherData.days[0].sunset,
+    );
+
     generateHeroSection(weatherData);
 
     generateDailyForecastSection(weatherData);
@@ -19,6 +26,8 @@ const loadWeather = async (searchInput, unit = 'metric') => {
       weatherData.currentConditions.datetime,
       weatherData.days[0].hours,
       weatherData.days[1].hours,
+      weatherData.days[0].sunset,
+      weatherData.days[1].sunrise,
     );
 
     generateWeatherCardSection(weatherData);

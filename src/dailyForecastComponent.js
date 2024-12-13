@@ -1,5 +1,5 @@
 import createTempSlider from './temperature-range-indicator';
-import sunsetIcon from './assets/icon/sunset.svg';
+// import sunsetIcon from './assets/icon/sunset.svg';
 
 function getDayOfWeek(dateString) {
   const date = new Date(dateString); // Convert string to Date object

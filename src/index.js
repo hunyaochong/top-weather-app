@@ -8,6 +8,7 @@ import './styles/header.css';
 import './styles/hero.css';
 import './styles/search_form.css';
 import './styles/weather_grid.css';
+import './styles/daily_forecast.css';
 import './styles/temperature_range_indicator.css';
 import './styles/hourly_forecast.css';
 import './styles/footer.css';

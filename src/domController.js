@@ -1,4 +1,17 @@
-// cache DOM
+import backgroundMap from './backgroundMapper';
+import getHourValue from './helpers';
 
+export default function renderBackground(icon, sunsetHour, sunriseHour) {
+  console.log('rendering background');
+  const body = document.querySelector('body');
+  const hour = new Date().getHours();
 
-// render DOM
+  if (hour === getHourValue(sunsetHour)) {
+    body.style.backgroundImage = `url(${backgroundMap.sunset})`;
+  } else if (hour === getHourValue(sunriseHour)) {
+    body.style.backgroundImage = `url(${backgroundMap.sunrise})`;
+  } else {
+    // console.log(`backgorund image: ${backgroundMap[icon]}`);
+    body.style.backgroundImage = `url(${backgroundMap[icon] || backgroundMap.default})`;
+  }
+}

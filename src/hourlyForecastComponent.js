@@ -5,6 +5,8 @@ export default function generateHourlyForecastSection(
   currentTime,
   todayWeatherData,
   nextDayWeatherData,
+  todaySunset,
+  nextDaySunrise,
 ) {
   const hourlyForecastArr = filterForecast(
     currentTime,
@@ -23,8 +25,9 @@ export default function generateHourlyForecastSection(
       temp,
       getHourValue(datetime),
       icon,
+      getHourValue(todaySunset),
+      getHourValue(nextDaySunrise),
     );
-    console.log(hourForecastComponent);
     parentContainer.appendChild(hourForecastComponent);
   });
 }
@@ -45,20 +48,22 @@ function filterForecast(currentTime, todayWeatherData, nextDayWeatherData) {
   return hourlyForecastArray;
 }
 
-function generateComponent(temp, hour, icon) {
-  // Create the main div element
+function generateComponent(temp, hour, icon, sunsetHour, sunriseHour) {
   const forecastGroup = document.createElement('div');
   forecastGroup.className = 'hourly-forecast-group';
 
-  // Create and append the first span
   const timeSpan = document.createElement('span');
   timeSpan.textContent = hour;
   forecastGroup.appendChild(timeSpan);
 
-  // Create and append the image element
   const img = document.createElement('img');
-  // todo: dynamic assignment
-  img.src = iconMap[icon];
+  if (hour === sunsetHour) {
+    img.src = iconMap.sunset;
+  } else if (hour === sunriseHour) {
+    img.src = iconMap.sunrise;
+  } else {
+    img.src = iconMap[icon];
+  }
   forecastGroup.appendChild(img);
 
   // Create and append the second span
