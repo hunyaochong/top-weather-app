@@ -56,20 +56,7 @@ export function renderDailyForecastComponent(
   }
 }
 
-function generateCardComponent(data, commentaries, wrapper) {
-  // todo: adjust sunset icon
-  console.log(`Data in generateCardComponent: ${data}`);
-  console.log(`Wrapper in generateCardComponent: ${wrapper}`);
-  console.log(`Commentaries in generateCardComponent: ${commentaries}`);
-  const infoSpan = wrapper.querySelector('.weather-misc__info');
-  const commentaryEle = wrapper.querySelector('p');
-  console.log(`Selecting info span: ${infoSpan}`);
-  infoSpan.textContent = data;
-  commentaryEle.textContent = commentaries;
-}
-
 export function renderCardComponent(units, commentaries) {
-  // todo: to add commentaries
   const sunsetWrapper = document.querySelector('.sunset');
   generateCardComponent(
     units.sunset,
@@ -107,4 +94,12 @@ export function renderCardComponent(units, commentaries) {
     commentaries.pressureCommentaries,
     pressureWrapper,
   );
+}
+
+function generateCardComponent(data, commentaries, wrapper) {
+  // todo: adjust sunset icon
+  const infoSpan = wrapper.querySelector('.weather-misc__info');
+  const commentaryEle = wrapper.querySelector('p');
+  infoSpan.textContent = data;
+  commentaryEle.textContent = commentaries;
 }

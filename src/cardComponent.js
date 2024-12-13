@@ -1,26 +1,6 @@
 import weatherCommentaries from './weatherCommentaries';
 import { renderCardComponent } from './renderer';
 
-function processPercentageUnit(value) {
-  return `${value.toFixed(0)} %`;
-}
-
-function processWindUnit(value) {
-  return `${value.toFixed(0)} km/h`;
-}
-
-function processVisibilityUnit(value) {
-  return `${value.toFixed(0)} km`;
-}
-
-function processPressureUnit(value) {
-  return `${value.toFixed(0)} hPa`;
-}
-
-function processDirectionUnit(value) {
-  return `${value}°`;
-}
-
 function generateCommentaries(humidity, cloudcover, visibility, pressure) {
   let humidityCommentaries;
   let cloudCoverCommentaries;
@@ -100,9 +80,28 @@ export default function generateWeatherCardSection(data) {
     pressure,
   );
 
-  commentaries['sunsetCommentaries'] = `Sunrise: ${sunrise}`;
-  commentaries['windCommentaries'] =
-    `The wind is coming from ${processDirectionUnit(windDirection)}`;
+  commentaries.sunsetCommentaries = `Sunrise: ${sunrise}`;
+  commentaries.windCommentaries = `The wind is coming from ${processDirectionUnit(windDirection)}`;
 
   renderCardComponent(processedMeasurementUnit, commentaries);
+}
+
+function processPercentageUnit(value) {
+  return `${value.toFixed(0)} %`;
+}
+
+function processWindUnit(value) {
+  return `${value.toFixed(0)} km/h`;
+}
+
+function processVisibilityUnit(value) {
+  return `${value.toFixed(0)} km`;
+}
+
+function processPressureUnit(value) {
+  return `${value.toFixed(0)} hPa`;
+}
+
+function processDirectionUnit(value) {
+  return `${value}°`;
 }

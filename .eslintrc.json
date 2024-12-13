@@ -8,6 +8,7 @@
   "rules": {
     "prettier/prettier": "warn",
     "no-console": "off",
-    "no-alert": "off"
+    "no-alert": "off",
+    "no-use-before-define": "off"
   }
 }

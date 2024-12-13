@@ -1,6 +1,38 @@
 import { weatherAPI } from './config';
 import { renderHero, renderDailyForecastComponent } from './renderer';
 import generateWeatherCardSection from './cardComponent';
+import generateHourlyForecastSection from './hourlyForecastComponent';
+
+const loadWeather = async (searchInput, unit = 'metric') => {
+  try {
+    const response = await fetch(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchInput}?unitGroup=${unit}&key=${weatherAPI}&contentType=json`,
+    );
+    const weatherData = await response.json();
+    console.log(weatherData);
+
+    generateHeroSection(weatherData);
+
+    generateDailyForecastSection(weatherData);
+
+    generateHourlyForecastSection(
+      weatherData.currentConditions.datetime,
+      weatherData.days[0].hours,
+      weatherData.days[1].hours,
+    );
+
+    generateWeatherCardSection(weatherData);
+    /* Other useful info to consider:
+    weatherData.currentConditions.icon
+    weatherData.currentConditions.conditions
+    */
+  } catch (err) {
+    console.log(err);
+    alert('Request invalid, please enter a valid city name');
+  }
+};
+
+export default loadWeather;
 
 function getGlobalRange(data, duration) {
   const minTempArr = [];
@@ -42,32 +74,3 @@ function generateDailyForecastSection(data) {
     NEXT_TEN_DAYS,
   );
 }
-
-const loadWeather = async (searchInput, unit = 'metric') => {
-  try {
-    const response = await fetch(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchInput}?unitGroup=${unit}&key=${weatherAPI}&contentType=json`,
-    );
-    const weatherData = await response.json();
-    console.log(weatherData);
-
-    generateHeroSection(weatherData);
-
-    generateDailyForecastSection(weatherData);
-    // hourly forecast
-    // todo: to set it to display based on current time
-    // console.log(weatherData.days[0].hours);
-
-    generateWeatherCardSection(weatherData);
-
-    /* Other useful info to consider:
-    weatherData.currentConditions.icon
-    weatherData.currentConditions.conditions
-    */
-  } catch (err) {
-    console.log(err);
-    alert('Request invalid, please enter a valid city name');
-  }
-};
-
-export default loadWeather;
