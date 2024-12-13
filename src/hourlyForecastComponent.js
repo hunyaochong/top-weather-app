@@ -1,5 +1,5 @@
 import getHourValue from './helpers';
-import sunsetIcon from './assets/icon/sunset.svg';
+import iconMap from './iconMapper';
 
 export default function generateHourlyForecastSection(
   currentTime,
@@ -52,19 +52,17 @@ function generateComponent(temp, hour, icon) {
 
   // Create and append the first span
   const timeSpan = document.createElement('span');
-  // todo: dynamic assignment
   timeSpan.textContent = hour;
   forecastGroup.appendChild(timeSpan);
 
   // Create and append the image element
   const img = document.createElement('img');
   // todo: dynamic assignment
-  img.src = sunsetIcon;
+  img.src = iconMap[icon];
   forecastGroup.appendChild(img);
 
   // Create and append the second span
   const temperatureSpan = document.createElement('span');
-  // todo: dynamic assignment
   temperatureSpan.textContent = temp;
   forecastGroup.appendChild(temperatureSpan);
 
