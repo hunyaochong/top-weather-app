@@ -11,7 +11,6 @@ export default function renderBackground(icon, sunsetHour, sunriseHour) {
   } else if (hour === getHourValue(sunriseHour)) {
     body.style.backgroundImage = `url(${backgroundMap.sunrise})`;
   } else {
-    // console.log(`backgorund image: ${backgroundMap[icon]}`);
     body.style.backgroundImage = `url(${backgroundMap[icon] || backgroundMap.default})`;
   }
 }
