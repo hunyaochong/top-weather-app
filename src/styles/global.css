@@ -29,7 +29,7 @@ html {
 
   --color-accent: hsla(240deg 19% 63% 1);
   --inner-shadow: 0px 4px 4px hsla(0deg 0% 0% 0.25) inset;
-  --outer-shadow: 0px 4px 4px rgba(0deg 0% 0% 0.25);
+  --outer-shadow: 0px 6px 6px rgba(0deg 0% 0% 0.25);
 
   --space-xs: 4px;
   --space-s: 8px;

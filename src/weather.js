@@ -3,8 +3,9 @@ import { renderHero, renderDailyForecastComponent } from './renderer';
 import renderBackground from './domController';
 import generateWeatherCardSection from './cardComponent';
 import generateHourlyForecastSection from './hourlyForecastComponent';
+import generateFooter from './footer';
 
-const loadWeather = async (searchInput, unit = 'metric') => {
+const loadWeather = async (searchInput, localTime, unit = 'metric') => {
   try {
     const response = await fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchInput}?unitGroup=${unit}&key=${weatherAPI}&contentType=json`,
@@ -12,7 +13,7 @@ const loadWeather = async (searchInput, unit = 'metric') => {
     const weatherData = await response.json();
     console.log(weatherData);
 
-    renderBackground(
+    const photoCreds = renderBackground(
       weatherData.currentConditions.icon,
       weatherData.days[0].sunrise,
       weatherData.days[0].sunset,
@@ -31,10 +32,13 @@ const loadWeather = async (searchInput, unit = 'metric') => {
     );
 
     generateWeatherCardSection(weatherData);
-    /* Other useful info to consider:
-    weatherData.currentConditions.icon
-    weatherData.currentConditions.conditions
-    */
+
+    generateFooter(
+      weatherData.address,
+      localTime,
+      weatherData.currentConditions.datetime,
+      photoCreds,
+    );
   } catch (err) {
     console.log(err);
     alert('Request invalid, please enter a valid city name');

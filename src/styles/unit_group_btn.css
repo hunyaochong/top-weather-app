@@ -1,0 +1,13 @@
+.unit-group-buttons > button {
+  margin-left: var(--space-xs);
+  border-radius: 50%;
+  background-color: rgb(255 255 255 / 30%);
+  background-color: var(--bg-backdrop-filter);
+  cursor: pointer;
+  border: none;
+  box-shadow: var(--outer-shadow);
+
+  &.selected {
+    background-color: aqua;
+  }
+}
